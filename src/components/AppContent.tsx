@@ -4,6 +4,7 @@ import { AppProvider, useAppContext } from "@/context/AppContext";
 import Navigation from "@/components/Navigation";
 import ParticipantCard from "@/components/ParticipantCard";
 import ParticipantModal from "@/components/ParticipantModal";
+import SwipeableCard from "@/components/SwipeableCard";
 import { getParticipantsByCategory } from "@/utils/dataLoader";
 import { ParticipantCategory } from "@/types/participant";
 
@@ -30,10 +31,21 @@ function ParticipantGrid() {
 }
 
 function MainContent() {
+  const { state, handleSwipe, hideSwipeableCard } = useAppContext();
+
   return (
     <main className="main">
       <ParticipantGrid />
       <ParticipantModal />
+      {state.swipeableCard.participant && (
+        <SwipeableCard
+          participant={state.swipeableCard.participant}
+          onSwipe={handleSwipe}
+          onClose={hideSwipeableCard}
+          swipeStats={state.swipeableCard.swipeStats || undefined}
+          isVisible={state.swipeableCard.isVisible}
+        />
+      )}
     </main>
   );
 }

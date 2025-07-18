@@ -20,4 +20,13 @@ export type ParticipantCategory =
 export interface AppState {
   currentCategory: ParticipantCategory;
   selectedParticipant: Participant | null;
+  swipeableCard: {
+    isVisible: boolean;
+    participant: Participant | null;
+    swipeStats: SwipeStats | null;
+  };
+  swipeStats: Record<string, SwipeStats>;
 }
+
+// Import SwipeStats from swipe types
+import { SwipeStats } from "./swipe";

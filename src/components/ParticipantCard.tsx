@@ -8,10 +8,10 @@ interface ParticipantCardProps {
 }
 
 export default function ParticipantCard({ participant }: ParticipantCardProps) {
-  const { selectParticipant } = useAppContext();
+  const { showSwipeableCard } = useAppContext();
 
   const handleCardClick = () => {
-    selectParticipant(participant);
+    showSwipeableCard(participant);
   };
 
   const formatLocation = () => {

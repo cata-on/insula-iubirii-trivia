@@ -7,17 +7,33 @@ import {
   Participant,
 } from "@/types/participant";
 import { getParticipantsByCategory } from "@/utils/dataLoader";
+import { SwipeAction, SwipeStats } from "@/types/swipe";
 
 // Action types for state management
 type AppAction =
   | { type: "SET_CATEGORY"; payload: ParticipantCategory }
   | { type: "SELECT_PARTICIPANT"; payload: Participant | null }
-  | { type: "CLEAR_SELECTION" };
+  | { type: "CLEAR_SELECTION" }
+  | {
+      type: "SHOW_SWIPEABLE_CARD";
+      payload: { participant: Participant; swipeStats?: SwipeStats };
+    }
+  | { type: "HIDE_SWIPEABLE_CARD" }
+  | {
+      type: "UPDATE_SWIPE_STATS";
+      payload: { participantId: string; stats: SwipeStats };
+    };
 
 // Default initial state
 const defaultInitialState: AppState = {
   currentCategory: "ispite_feminine",
   selectedParticipant: null,
+  swipeableCard: {
+    isVisible: false,
+    participant: null,
+    swipeStats: null,
+  },
+  swipeStats: {},
 };
 
 // Reducer function for state updates
@@ -39,6 +55,32 @@ function appReducer(state: AppState, action: AppAction): AppState {
         ...state,
         selectedParticipant: null,
       };
+    case "SHOW_SWIPEABLE_CARD":
+      return {
+        ...state,
+        swipeableCard: {
+          isVisible: true,
+          participant: action.payload.participant,
+          swipeStats: action.payload.swipeStats || null,
+        },
+      };
+    case "HIDE_SWIPEABLE_CARD":
+      return {
+        ...state,
+        swipeableCard: {
+          isVisible: false,
+          participant: null,
+          swipeStats: null,
+        },
+      };
+    case "UPDATE_SWIPE_STATS":
+      return {
+        ...state,
+        swipeStats: {
+          ...state.swipeStats,
+          [action.payload.participantId]: action.payload.stats,
+        },
+      };
     default:
       return state;
   }
@@ -50,6 +92,12 @@ interface AppContextType {
   setCategory: (category: ParticipantCategory) => void;
   selectParticipant: (participant: Participant | null) => void;
   clearSelection: () => void;
+  showSwipeableCard: (
+    participant: Participant,
+    swipeStats?: SwipeStats
+  ) => void;
+  hideSwipeableCard: () => void;
+  handleSwipe: (action: SwipeAction) => Promise<void>;
 }
 
 // Provider props interface
@@ -82,6 +130,12 @@ export function AppProvider({
     return {
       currentCategory: initialCategory,
       selectedParticipant: participant,
+      swipeableCard: {
+        isVisible: false,
+        participant: null,
+        swipeStats: null,
+      },
+      swipeStats: {},
     };
   };
 
@@ -99,11 +153,38 @@ export function AppProvider({
     dispatch({ type: "CLEAR_SELECTION" });
   };
 
+  const showSwipeableCard = (
+    participant: Participant,
+    swipeStats?: SwipeStats
+  ) => {
+    dispatch({
+      type: "SHOW_SWIPEABLE_CARD",
+      payload: { participant, swipeStats },
+    });
+  };
+
+  const hideSwipeableCard = () => {
+    dispatch({ type: "HIDE_SWIPEABLE_CARD" });
+  };
+
+  const handleSwipe = async (action: SwipeAction) => {
+    if (!state.swipeableCard.participant) return;
+
+    // TODO: Implement API call to store swipe
+    console.log(`Swiped ${action} on ${state.swipeableCard.participant.name}`);
+
+    // For now, just hide the card
+    hideSwipeableCard();
+  };
+
   const value: AppContextType = {
     state,
     setCategory,
     selectParticipant,
     clearSelection,
+    showSwipeableCard,
+    hideSwipeableCard,
+    handleSwipe,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
