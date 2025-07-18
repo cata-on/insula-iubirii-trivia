@@ -2,6 +2,13 @@
 
 ## Phase 1: Core Swipe UI ✅ COMPLETED
 
+### ✅ Latest Updates (v0.2.2)
+
+- **Smooth Exit Animations** - Cards now slide out smoothly when swiped
+- **Desktop Click Protection** - Fixed accidental closes when clicking on card content
+- **Cross-platform Consistency** - Improved behavior parity between mobile and desktop
+- **Animation State Management** - Proper handling of exit animation states
+
 ### ✅ Completed Components
 
 1. **TypeScript Types** (`src/types/swipe.ts`)

@@ -5,6 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.2] - 2025-07-19
+
+### Added
+
+- **Smooth Exit Animations** - Cards now slide out smoothly when swiped instead of instantly disappearing
+- **Exit Animation State Management** - Proper state handling to prevent premature DOM removal
+- **Desktop Click Protection** - Prevents accidental card closes when clicking on card content
+
+### Changed
+
+- **Swipe Behavior** - Enhanced swipe experience with smooth transitions
+- **Animation Timing** - 300ms exit animation with ease-out timing
+- **User Experience** - More polished and professional feel across all platforms
+
+### Fixed
+
+- **Desktop Interaction** - Fixed issue where clicking on card would close it instantly
+- **Animation Timing** - Cards now stay in DOM long enough for animations to complete
+- **Cross-platform Consistency** - Improved behavior parity between mobile and desktop
+
+### Technical
+
+- **State Management** - Added exit animation states to AppContext
+- **Event Handling** - Implemented stopPropagation to prevent event bubbling
+- **CSS Animations** - Added smooth translateX transitions for exit animations
+
 ## [0.2.1] - 2025-07-19
 
 ### Added

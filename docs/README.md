@@ -2,7 +2,7 @@
 
 A modern web application for "Insula Iubirii" show participants featuring a Tinder-like swipe interface for viewing participant information.
 
-**Current Version:** 0.2.1
+**Current Version:** 0.2.2
 
 ---
 
