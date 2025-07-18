@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { Participant } from "@/types/participant";
 import { useAppContext } from "@/context/AppContext";
 
@@ -9,19 +8,9 @@ interface ParticipantCardProps {
 }
 
 export default function ParticipantCard({ participant }: ParticipantCardProps) {
-  const [isExpanded, setIsExpanded] = useState(false);
   const { selectParticipant } = useAppContext();
 
   const handleCardClick = () => {
-    if (isExpanded) {
-      setIsExpanded(false);
-    } else {
-      setIsExpanded(true);
-    }
-  };
-
-  const handleViewDetails = (e: React.MouseEvent) => {
-    e.stopPropagation();
     selectParticipant(participant);
   };
 
@@ -30,7 +19,7 @@ export default function ParticipantCard({ participant }: ParticipantCardProps) {
       return participant.currentLocation;
     }
     if (participant.birthplace) {
-      return `Născut în ${participant.birthplace}`;
+      return participant.birthplace;
     }
     return null;
   };
@@ -42,9 +31,15 @@ export default function ParticipantCard({ participant }: ParticipantCardProps) {
     return null;
   };
 
+  // Truncate bio for compact display
+  const truncateBio = (bio: string, maxLength: number = 80) => {
+    if (bio.length <= maxLength) return bio;
+    return bio.substring(0, maxLength) + "...";
+  };
+
   return (
     <div
-      className={`card ${isExpanded ? "expanded" : ""}`}
+      className="card"
       onClick={handleCardClick}
       tabIndex={0}
       role="button"
@@ -81,44 +76,16 @@ export default function ParticipantCard({ participant }: ParticipantCardProps) {
       <div className="card-content">
         <div className="card-header">
           <h3 className="card-name">{participant.name}</h3>
-          {formatAge() && <p className="card-age">{formatAge()}</p>}
+          {formatAge() && <span className="card-age">{formatAge()}</span>}
         </div>
+
+        <p className="card-occupation">{participant.occupation}</p>
 
         {formatLocation() && (
           <p className="card-location">{formatLocation()}</p>
         )}
 
-        <p className="card-occupation">{participant.occupation}</p>
-
-        <p className="card-bio">{participant.bio}</p>
-
-        {isExpanded && (
-          <div className="card-details">
-            {participant.birthplace && participant.currentLocation && (
-              <div className="detail-item">
-                <div className="detail-label">Locul de naștere</div>
-                <div className="detail-value">{participant.birthplace}</div>
-              </div>
-            )}
-
-            {participant.otherLocations.length > 0 && (
-              <div className="detail-item">
-                <div className="detail-label">Alte locații</div>
-                <div className="detail-value">
-                  {participant.otherLocations.join(", ")}
-                </div>
-              </div>
-            )}
-
-            <button
-              className="nav-tab"
-              onClick={handleViewDetails}
-              style={{ marginTop: "12px", width: "100%" }}
-            >
-              Vezi toate detaliile
-            </button>
-          </div>
-        )}
+        <p className="card-bio">{truncateBio(participant.bio)}</p>
       </div>
     </div>
   );
