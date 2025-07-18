@@ -38,6 +38,12 @@ const imageUrls = {
     "https://img.a1.ro/?u=https%3A%2F%2Fa1.ro%2Fuploads%2Fmodules%2Fnews%2F0%2F2025%2F6%2F27%2F1138959%2Fliviu-trif-jpg-92b2kpk2.jpg?w=800",
   "sorin-encica":
     "https://img.a1.ro/?u=https%3A%2F%2Fa1.ro%2Fuploads%2Fmodules%2Fnews%2F0%2F2025%2F6%2F27%2F1138959%2Fsorin-encica-jpg-lo3wxbfl.jpg?w=800",
+  "octavian-grigorescu":
+    "https://img.a1.ro/?u=https%3A%2F%2Fa1.ro%2Fuploads%2Fmodules%2Fnews%2F0%2F2025%2F6%2F27%2F1138959%2Foctavian-grigorescu-jpg-ikf9q7gu.jpg?w=800",
+  "dan-dumitras":
+    "https://img.a1.ro/?u=https%3A%2F%2Fa1.ro%2Fuploads%2Fmodules%2Fnews%2F0%2F2025%2F6%2F27%2F1138959%2Fdan-dumitras-jpg-nfk1ylvr.jpg?w=800",
+  "andrei-vasile":
+    "https://img.a1.ro/?u=https%3A%2F%2Fa1.ro%2Fuploads%2Fmodules%2Fnews%2F0%2F2025%2F6%2F27%2F1138959%2Fandrei-vasile-jpg-k69upvgf.jpg?w=800",
 
   // Couples
   "francesca-sarao":
@@ -135,7 +141,10 @@ async function downloadAllImages() {
         participantId.includes("narcis") ||
         participantId.includes("mattia") ||
         participantId.includes("liviu") ||
-        participantId.includes("sorin")
+        participantId.includes("sorin") ||
+        participantId.includes("octavian") ||
+        participantId.includes("dan") ||
+        participantId.includes("andrei")
       ) {
         category = "ispite_masculine";
       }

@@ -70,5 +70,41 @@
     "occupation": "Data scientist",
     "role": "ispit_masculin",
     "picture": "/images/ispite_masculine/sorin-encica.jpg"
+  },
+  {
+    "id": "octavian-grigorescu",
+    "name": "Octavian Grigorescu",
+    "age": 26,
+    "birthplace": null,
+    "currentLocation": "Bali, Indonezia",
+    "otherLocations": ["Thailanda (destinație pentru Insula Iubirii)"],
+    "bio": "DJ și Producător muzical, cel mai tânăr participant. Stabilit în Bali, prin activitatea sa interacționează cu oameni din întreaga lume. Iubește viața și înțelege tentația, dar nu trăiește pentru ea.",
+    "occupation": "DJ și Producător muzical",
+    "role": "ispit_masculin",
+    "picture": "/images/ispite_masculine/octavian-grigorescu.jpg"
+  },
+  {
+    "id": "dan-dumitras",
+    "name": "Dan Dumitraș",
+    "age": 39,
+    "birthplace": null,
+    "currentLocation": null,
+    "otherLocations": [],
+    "bio": "Inginer proiectant, fost model, cu experiență amplă în lumea întâlnirilor. A venit în emisiune pentru a arăta celorlalți cum se face, fiind convins că are ceea ce îi trebuie pentru a cuceri orice femeie.",
+    "occupation": "Inginer proiectant, fost model",
+    "role": "ispit_masculin",
+    "picture": "/images/ispite_masculine/dan-dumitras.jpg"
+  },
+  {
+    "id": "andrei-vasile",
+    "name": "Andrei Vasile",
+    "age": 37,
+    "birthplace": "România",
+    "currentLocation": "Marea Britanie",
+    "otherLocations": ["Marea Britanie (mulți ani)"],
+    "bio": "Actor și model stabilit de mulți ani în Marea Britanie, recent absolvent al cursurilor de antrenor de fitness. Se descrie ca un Luceafăr care strălucește când primește lumină, altfel rămâne o cometă în cădere.",
+    "occupation": "Actor și model, antrenor fitness",
+    "role": "ispit_masculin",
+    "picture": "/images/ispite_masculine/andrei-vasile.jpg"
   }
 ]
