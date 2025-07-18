@@ -1,0 +1,110 @@
+[
+  {
+    "id": "cristina-scarlevschi",
+    "name": "Cristina Scarlevschi",
+    "age": 31,
+    "birthplace": "Republica Moldova",
+    "currentLocation": "Republica Moldova",
+    "otherLocations": [],
+    "bio": "Instructor de pole dance, pasionată de sport și dans. Se descrie ca o moldoveancă focoasă, autentică, plină de viață și pasiune.",
+    "occupation": "Instructor de pole dance",
+    "role": "ispita_feminina",
+    "picture": "/images/ispite_feminine/cristina-scarlevschi.jpg"
+  },
+  {
+    "id": "nicoleta-balint",
+    "name": "Nicoleta Balint",
+    "age": 28,
+    "birthplace": null,
+    "currentLocation": null,
+    "otherLocations": [],
+    "bio": "Specialist în marketing, calmă, loială, sinceră și creativă. Dornică să descopere limitele dintre emoții și atracții.",
+    "occupation": "Specialist marketing",
+    "role": "ispita_feminina",
+    "picture": "/images/ispite_feminine/nicoleta-balint.jpg"
+  },
+  {
+    "id": "diandra-goleanu",
+    "name": "Diandra Goleanu",
+    "age": 35,
+    "birthplace": "Romania",
+    "currentLocation": "Canada",
+    "otherLocations": ["Romania (până la 12 ani)"],
+    "bio": "Are propria afacere de vânzări auto, trăiește în afara țării de la 12 ani, sinceră, autentică și cu intenții frumoase.",
+    "occupation": "Antreprenor auto",
+    "role": "ispita_feminina",
+    "picture": "/images/ispite_feminine/diandra-goleanu.jpg"
+  },
+  {
+    "id": "andreea-aurica",
+    "name": "Andreea Aurică",
+    "age": null,
+    "birthplace": null,
+    "currentLocation": null,
+    "otherLocations": [],
+    "bio": "Hair stylist, cunoscută ca 'Andrușca', capabilă să înțeleagă oamenii de la prima privire, stabilește rapid conexiuni autentice, nu se teme să spună adevărul, îmbrățișează emoțiile.",
+    "occupation": "Hair stylist",
+    "role": "ispita_feminina",
+    "picture": "/images/ispite_feminine/andreea-aurica.jpg"
+  },
+  {
+    "id": "naba-salem",
+    "name": "Naba Salem",
+    "age": null,
+    "birthplace": "Irak",
+    "currentLocation": "București, România",
+    "otherLocations": ["Oradea, România"],
+    "bio": "Model, persoană publică, fostă studentă la Jurnalism, a apărut în mai multe show-uri TV. Se prezintă ca model și are peste 150.000 de urmăritori pe Instagram.",
+    "occupation": "Model, persoană publică",
+    "role": "ispita_feminina",
+    "picture": "/images/ispite_feminine/naba-salem.jpg"
+  },
+  {
+    "id": "mihaela-mincu",
+    "name": "Mihaela Mincu",
+    "age": null,
+    "birthplace": null,
+    "currentLocation": null,
+    "otherLocations": [],
+    "bio": "Model, sufletul petrecerilor, energică, sociabilă, adoră să organizeze jocuri colective și să întrețină atmosfera.",
+    "occupation": "Model",
+    "role": "ispita_feminina",
+    "picture": "/images/ispite_feminine/mihaela-mincu.jpg"
+  },
+  {
+    "id": "andreea-craciun",
+    "name": "Andreea Crăciun",
+    "age": 25,
+    "birthplace": null,
+    "currentLocation": null,
+    "otherLocations": [],
+    "bio": "Instructor de fitness, mamă a unei fetițe, a trecut printr-o despărțire dificilă, caută o relație serioasă.",
+    "occupation": "Instructor fitness",
+    "role": "ispita_feminina",
+    "picture": "/images/ispite_feminine/andreea-craciun.jpg"
+  },
+  {
+    "id": "amelia",
+    "name": "Amelia",
+    "age": 26,
+    "birthplace": null,
+    "currentLocation": null,
+    "otherLocations": [],
+    "bio": "Cântăreață, zodia rac, carismatică, iubibilă și naturală, dornică să-și dezvolte cariera artistică.",
+    "occupation": "Cântăreață",
+    "role": "ispita_feminina",
+    "picture": "/images/ispite_feminine/amelia.jpg"
+  },
+  {
+    "id": "teodora-racos",
+    "name": "Teodora Racoș",
+    "age": 36,
+    "birthplace": "România",
+    "currentLocation": "Marea Britanie",
+    "otherLocations": [],
+    "bio": "Specialistă în estetică medicală facială, conduce propriul salon, două facultăți (Management Turism România, Asistent Medical Londra), look cu tatuaje, calmă, răbdătoare, respectuoasă, singură de doi ani.",
+    "occupation": "Specialist estetică medicală facială",
+    "role": "ispita_feminina",
+    "picture": "/images/ispite_feminine/teodora-racos.jpg"
+  }
+]

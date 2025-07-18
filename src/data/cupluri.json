@@ -1,0 +1,14 @@
+[
+  {
+    "id": "placeholder-couple-1",
+    "name": "Cuplu 1",
+    "age": null,
+    "birthplace": null,
+    "currentLocation": null,
+    "otherLocations": [],
+    "bio": "Informații despre cuplu vor fi adăugate când vor fi disponibile.",
+    "occupation": "TBD",
+    "role": "cuplu",
+    "picture": "/images/cupluri/placeholder-1.jpg"
+  }
+]

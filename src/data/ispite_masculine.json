@@ -1,0 +1,74 @@
+[
+  {
+    "id": "catalin-brinza",
+    "name": "Cătălin Brînză",
+    "age": 36,
+    "birthplace": "România",
+    "currentLocation": "Marea Britanie",
+    "otherLocations": [],
+    "bio": "Retail director pentru unul dintre cele mai de succes brand-uri românești de haine. Dornic de noi experiențe în viață, pasionat de călătorii din perioada în care prin prisma jobului a mers în toate colțurile lumii.",
+    "occupation": "Retail director",
+    "role": "ispit_masculin",
+    "picture": "/images/ispite_masculine/catalin-brinza.jpg"
+  },
+  {
+    "id": "george-ivanescu",
+    "name": "George Ivănescu",
+    "age": 33,
+    "birthplace": "România",
+    "currentLocation": "România",
+    "otherLocations": ["Italia (mai mulți ani)"],
+    "bio": "Antreprenor în domeniul horeca, cu mai multe afaceri de care se ocupă, cu experiență internațională amplă. Poreclit Jaguarul, aduce zâmbete și distracție.",
+    "occupation": "Antreprenor horeca",
+    "role": "ispit_masculin",
+    "picture": "/images/ispite_masculine/george-ivanescu.jpg"
+  },
+  {
+    "id": "narcis-bujor",
+    "name": "Narcis Bujor",
+    "age": 32,
+    "birthplace": null,
+    "currentLocation": null,
+    "otherLocations": [],
+    "bio": "Tattoo Artist cu înălțime impunătoare și pasiune pentru tatuaje. Îmbină duritatea masculină cu sensibilitatea, se joacă cu focul pentru a crea spectacole de neuitat.",
+    "occupation": "Tattoo Artist",
+    "role": "ispit_masculin",
+    "picture": "/images/ispite_masculine/narcis-bujor.jpg"
+  },
+  {
+    "id": "mattia-carnessali",
+    "name": "Mattia Carnessali",
+    "age": 32,
+    "birthplace": "Italia",
+    "currentLocation": "România",
+    "otherLocations": ["Italia (până la stabilirea în România)"],
+    "bio": "Italian stabilit de multă vreme în România, antreprenor veritabil cu pasiune pentru afaceri și viteză. După mulți ani de dezvoltare profesională, își poate face vreme pentru călătorii.",
+    "occupation": "Antreprenor",
+    "role": "ispit_masculin",
+    "picture": "/images/ispite_masculine/mattia-carnessali.jpg"
+  },
+  {
+    "id": "liviu-trif",
+    "name": "Liviu Trif",
+    "age": 34,
+    "birthplace": null,
+    "currentLocation": null,
+    "otherLocations": ["Thailanda (prin călătorii)"],
+    "bio": "Antreprenor în domeniul fitness-ului, cu mare dorință de evoluție personală și profesională. Pasionat de dansuri, a ajuns în unele dintre cele mai frumoase țări din jurul lumii.",
+    "occupation": "Antreprenor fitness",
+    "role": "ispit_masculin",
+    "picture": "/images/ispite_masculine/liviu-trif.jpg"
+  },
+  {
+    "id": "sorin-encica",
+    "name": "Sorin Encică",
+    "age": 30,
+    "birthplace": "România",
+    "currentLocation": "România",
+    "otherLocations": ["Londra (studii)"],
+    "bio": "Data scientist într-o companie IT, a studiat în Londra. Viața și relațiile l-au făcut să simtă că mintea este cel mai incitant lucru pe care-l poate avea cineva.",
+    "occupation": "Data scientist",
+    "role": "ispit_masculin",
+    "picture": "/images/ispite_masculine/sorin-encica.jpg"
+  }
+]
