@@ -19,6 +19,8 @@ type AppAction =
       payload: { participant: Participant; swipeStats?: SwipeStats };
     }
   | { type: "HIDE_SWIPEABLE_CARD" }
+  | { type: "START_SWIPE_EXIT"; payload: { direction: "left" | "right" } }
+  | { type: "COMPLETE_SWIPE_EXIT" }
   | {
       type: "UPDATE_SWIPE_STATS";
       payload: { participantId: string; stats: SwipeStats };
@@ -32,6 +34,8 @@ const defaultInitialState: AppState = {
     isVisible: false,
     participant: null,
     swipeStats: null,
+    isExiting: false,
+    exitDirection: undefined,
   },
   swipeStats: {},
 };
@@ -73,6 +77,26 @@ function appReducer(state: AppState, action: AppAction): AppState {
           swipeStats: null,
         },
       };
+    case "START_SWIPE_EXIT":
+      return {
+        ...state,
+        swipeableCard: {
+          ...state.swipeableCard,
+          isExiting: true,
+          exitDirection: action.payload.direction,
+        },
+      };
+    case "COMPLETE_SWIPE_EXIT":
+      return {
+        ...state,
+        swipeableCard: {
+          isVisible: false,
+          participant: null,
+          swipeStats: null,
+          isExiting: false,
+          exitDirection: undefined,
+        },
+      };
     case "UPDATE_SWIPE_STATS":
       return {
         ...state,
@@ -97,6 +121,8 @@ interface AppContextType {
     swipeStats?: SwipeStats
   ) => void;
   hideSwipeableCard: () => void;
+  startSwipeExit: (direction: "left" | "right") => void;
+  completeSwipeExit: () => void;
   handleSwipe: (action: SwipeAction) => Promise<void>;
 }
 
@@ -134,6 +160,8 @@ export function AppProvider({
         isVisible: false,
         participant: null,
         swipeStats: null,
+        isExiting: false,
+        exitDirection: undefined,
       },
       swipeStats: {},
     };
@@ -167,14 +195,28 @@ export function AppProvider({
     dispatch({ type: "HIDE_SWIPEABLE_CARD" });
   };
 
+  const startSwipeExit = (direction: "left" | "right") => {
+    dispatch({ type: "START_SWIPE_EXIT", payload: { direction } });
+  };
+
+  const completeSwipeExit = () => {
+    dispatch({ type: "COMPLETE_SWIPE_EXIT" });
+  };
+
   const handleSwipe = async (action: SwipeAction) => {
     if (!state.swipeableCard.participant) return;
 
     // TODO: Implement API call to store swipe
     console.log(`Swiped ${action} on ${state.swipeableCard.participant.name}`);
 
-    // For now, just hide the card
-    hideSwipeableCard();
+    // Start exit animation based on swipe direction
+    const direction = action === "like" ? "right" : "left";
+    startSwipeExit(direction);
+
+    // Hide the card after animation completes
+    setTimeout(() => {
+      hideSwipeableCard();
+    }, 300);
   };
 
   const value: AppContextType = {
@@ -184,6 +226,8 @@ export function AppProvider({
     clearSelection,
     showSwipeableCard,
     hideSwipeableCard,
+    startSwipeExit,
+    completeSwipeExit,
     handleSwipe,
   };
 

@@ -31,6 +31,8 @@ export interface SwipeableCardProps {
   onClose: () => void;
   swipeStats?: SwipeStats;
   isVisible: boolean;
+  isExiting?: boolean;
+  exitDirection?: "left" | "right";
 }
 
 export interface SwipeResponse {

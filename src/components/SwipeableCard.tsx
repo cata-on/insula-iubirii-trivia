@@ -10,6 +10,8 @@ export default function SwipeableCard({
   onClose,
   swipeStats,
   isVisible,
+  isExiting = false,
+  exitDirection,
 }: SwipeableCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -75,7 +77,8 @@ export default function SwipeableCard({
     };
   }, [isVisible]);
 
-  if (!isVisible) return null;
+  // Don't return null immediately - let the animation complete
+  if (!isVisible && !isExiting) return null;
 
   const formatLocation = (location: string | null) => {
     return location || "Informație indisponibilă";
@@ -98,6 +101,16 @@ export default function SwipeableCard({
 
   // Get swipe feedback styling
   const getSwipeFeedback = () => {
+    // Handle exit animation
+    if (isExiting && exitDirection) {
+      const translateX = exitDirection === "right" ? "100vw" : "-100vw";
+      return {
+        transform: `translateX(${translateX})`,
+        transition: "transform 0.3s ease-out",
+      };
+    }
+
+    // Handle dragging feedback
     if (!isDragging || !direction) return {};
 
     const baseStyle = {
@@ -132,6 +145,7 @@ export default function SwipeableCard({
         role="dialog"
         aria-modal="true"
         aria-labelledby="participant-name"
+        onClick={(e) => e.stopPropagation()}
       >
         {/* Participant image */}
         <div className="swipeable-card-image">

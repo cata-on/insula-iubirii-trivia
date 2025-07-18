@@ -629,6 +629,11 @@ body.category-couples {
   flex-direction: column;
 }
 
+/* Exit animation styles */
+.swipeable-card.exiting {
+  pointer-events: none;
+}
+
 .swipeable-card-image {
   width: 100%;
   flex: 0 0 300px;

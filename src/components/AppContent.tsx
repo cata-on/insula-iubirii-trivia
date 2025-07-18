@@ -47,6 +47,8 @@ function MainContent() {
             onClose={hideSwipeableCard}
             swipeStats={state.swipeableCard.swipeStats || undefined}
             isVisible={state.swipeableCard.isVisible}
+            isExiting={state.swipeableCard.isExiting}
+            exitDirection={state.swipeableCard.exitDirection}
           />
         )}
       </main>

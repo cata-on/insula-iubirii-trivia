@@ -24,6 +24,8 @@ export interface AppState {
     isVisible: boolean;
     participant: Participant | null;
     swipeStats: SwipeStats | null;
+    isExiting?: boolean;
+    exitDirection?: "left" | "right";
   };
   swipeStats: Record<string, SwipeStats>;
 }
