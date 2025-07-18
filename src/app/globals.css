@@ -18,6 +18,19 @@ body {
   min-height: 100vh;
 }
 
+/* Category-specific background colors */
+body.category-feminine {
+  background: linear-gradient(135deg, #f9a8d4 0%, #f472b6 100%);
+}
+
+body.category-masculine {
+  background: linear-gradient(135deg, #93c5fd 0%, #60a5fa 100%);
+}
+
+body.category-couples {
+  background: linear-gradient(135deg, #fca5a5 0%, #f87171 100%);
+}
+
 /* Mobile-first container */
 .container {
   max-width: 1200px;
@@ -70,6 +83,7 @@ body {
   transition: all 0.2s ease;
   min-width: 60px;
   gap: 4px;
+  text-decoration: none;
 }
 
 .bottom-nav-tab:hover {
@@ -79,6 +93,37 @@ body {
 
 .bottom-nav-tab.active {
   background: #667eea;
+  color: white;
+}
+
+/* Category-specific colors */
+.bottom-nav-tab[href*="ispite-feminine"]:hover {
+  background: rgba(252, 231, 243, 0.4);
+  color: #f9a8d4;
+}
+
+.bottom-nav-tab[href*="ispite-feminine"].active {
+  background: #f9a8d4;
+  color: white;
+}
+
+.bottom-nav-tab[href*="ispite-masculine"]:hover {
+  background: rgba(219, 234, 254, 0.4);
+  color: #93c5fd;
+}
+
+.bottom-nav-tab[href*="ispite-masculine"].active {
+  background: #93c5fd;
+  color: white;
+}
+
+.bottom-nav-tab[href*="cupluri"]:hover {
+  background: rgba(254, 226, 226, 0.4);
+  color: #fca5a5;
+}
+
+.bottom-nav-tab[href*="cupluri"].active {
+  background: #fca5a5;
   color: white;
 }
 

@@ -3,4 +3,5 @@ AI can read from this when it needs to remind me about what's next on our shortl
 ========================================================================
 
 - swipe threshold display indicator
+- add analytics tracking
 
