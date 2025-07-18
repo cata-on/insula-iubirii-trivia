@@ -40,9 +40,9 @@ function MainContent() {
 export default function Home() {
   return (
     <AppProvider>
-      <div>
-        <Navigation />
+      <div className="app-container">
         <MainContent />
+        <Navigation />
       </div>
     </AppProvider>
   );
