@@ -167,10 +167,23 @@ export function useSwipeGesture(
     (e: TouchEvent) => {
       if (!finalConfig.enabled || !gestureState.isDragging) return;
 
-      // Only prevent default if we're actively dragging
-      e.preventDefault();
-      const touch = e.touches[0];
-      handleMove(touch.clientX, touch.clientY);
+      // Only prevent default if we're actively dragging on the swipeable card
+      const target = e.target as HTMLElement;
+      const card = target.closest(".swipeable-card");
+      if (card) {
+        // Check if we're in the content area (scrollable)
+        const contentArea = target.closest(".swipeable-card-content");
+        if (contentArea) {
+          // Don't prevent default in content area to allow scrolling
+          const touch = e.touches[0];
+          handleMove(touch.clientX, touch.clientY);
+        } else {
+          // Prevent default only on non-content areas (image, instructions, etc.)
+          e.preventDefault();
+          const touch = e.touches[0];
+          handleMove(touch.clientX, touch.clientY);
+        }
+      }
     },
     [handleMove, gestureState.isDragging, finalConfig.enabled]
   );
@@ -179,8 +192,21 @@ export function useSwipeGesture(
     (e: TouchEvent) => {
       if (!finalConfig.enabled || !gestureState.isDragging) return;
 
-      e.preventDefault();
-      handleEnd();
+      // Only prevent default if we're ending a drag on the swipeable card
+      const target = e.target as HTMLElement;
+      const card = target.closest(".swipeable-card");
+      if (card) {
+        // Check if we're in the content area (scrollable)
+        const contentArea = target.closest(".swipeable-card-content");
+        if (contentArea) {
+          // Don't prevent default in content area to allow scrolling
+          handleEnd();
+        } else {
+          // Prevent default only on non-content areas
+          e.preventDefault();
+          handleEnd();
+        }
+      }
     },
     [handleEnd, gestureState.isDragging, finalConfig.enabled]
   );
@@ -204,8 +230,13 @@ export function useSwipeGesture(
     (e: MouseEvent) => {
       if (!finalConfig.enabled || !gestureState.isDragging) return;
 
-      e.preventDefault();
-      handleMove(e.clientX, e.clientY);
+      // Only prevent default if we're actively dragging on the swipeable card
+      const target = e.target as HTMLElement;
+      const card = target.closest(".swipeable-card");
+      if (card) {
+        e.preventDefault();
+        handleMove(e.clientX, e.clientY);
+      }
     },
     [handleMove, gestureState.isDragging, finalConfig.enabled]
   );
@@ -214,35 +245,72 @@ export function useSwipeGesture(
     (e: MouseEvent) => {
       if (!finalConfig.enabled || !gestureState.isDragging) return;
 
-      e.preventDefault();
-      handleEnd();
+      // Only prevent default if we're ending a drag on the swipeable card
+      const target = e.target as HTMLElement;
+      const card = target.closest(".swipeable-card");
+      if (card) {
+        e.preventDefault();
+        handleEnd();
+      }
     },
     [handleEnd, gestureState.isDragging, finalConfig.enabled]
   );
 
   // Add event listeners
   useEffect(() => {
-    const element = document.documentElement;
+    // Find the swipeable card element
+    const cardElement = document.querySelector(".swipeable-card");
+    if (!cardElement) return;
 
     // Touch events
-    element.addEventListener("touchstart", handleTouchStart, {
+    cardElement.addEventListener(
+      "touchstart",
+      handleTouchStart as EventListener,
+      {
+        passive: false,
+      }
+    );
+    cardElement.addEventListener(
+      "touchmove",
+      handleTouchMove as EventListener,
+      {
+        passive: false,
+      }
+    );
+    cardElement.addEventListener("touchend", handleTouchEnd as EventListener, {
       passive: false,
     });
-    element.addEventListener("touchmove", handleTouchMove, { passive: false });
-    element.addEventListener("touchend", handleTouchEnd, { passive: false });
 
     // Mouse events
-    element.addEventListener("mousedown", handleMouseDown);
-    element.addEventListener("mousemove", handleMouseMove);
-    element.addEventListener("mouseup", handleMouseUp);
+    cardElement.addEventListener("mousedown", handleMouseDown as EventListener);
+    cardElement.addEventListener("mousemove", handleMouseMove as EventListener);
+    cardElement.addEventListener("mouseup", handleMouseUp as EventListener);
 
     return () => {
-      element.removeEventListener("touchstart", handleTouchStart);
-      element.removeEventListener("touchmove", handleTouchMove);
-      element.removeEventListener("touchend", handleTouchEnd);
-      element.removeEventListener("mousedown", handleMouseDown);
-      element.removeEventListener("mousemove", handleMouseMove);
-      element.removeEventListener("mouseup", handleMouseUp);
+      cardElement.removeEventListener(
+        "touchstart",
+        handleTouchStart as EventListener
+      );
+      cardElement.removeEventListener(
+        "touchmove",
+        handleTouchMove as EventListener
+      );
+      cardElement.removeEventListener(
+        "touchend",
+        handleTouchEnd as EventListener
+      );
+      cardElement.removeEventListener(
+        "mousedown",
+        handleMouseDown as EventListener
+      );
+      cardElement.removeEventListener(
+        "mousemove",
+        handleMouseMove as EventListener
+      );
+      cardElement.removeEventListener(
+        "mouseup",
+        handleMouseUp as EventListener
+      );
     };
   }, [
     handleTouchStart,

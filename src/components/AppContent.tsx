@@ -39,7 +39,6 @@ function MainContent() {
       <CategoryBackground />
       <main className="main">
         <ParticipantGrid />
-        <ParticipantModal />
         {state.swipeableCard.participant && (
           <SwipeableCard
             participant={state.swipeableCard.participant}

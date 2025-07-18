@@ -46,36 +46,7 @@ export default function SwipeableCard({
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isVisible, onSwipe, onClose]);
 
-  // Prevent body scroll when card is visible
-  useEffect(() => {
-    const preventScroll = (e: Event) => {
-      e.preventDefault();
-    };
-
-    if (isVisible) {
-      // Prevent scroll on body and html
-      document.body.addEventListener("wheel", preventScroll, {
-        passive: false,
-      });
-      document.body.addEventListener("touchmove", preventScroll, {
-        passive: false,
-      });
-      document.documentElement.addEventListener("wheel", preventScroll, {
-        passive: false,
-      });
-      document.documentElement.addEventListener("touchmove", preventScroll, {
-        passive: false,
-      });
-    }
-
-    return () => {
-      // Remove event listeners
-      document.body.removeEventListener("wheel", preventScroll);
-      document.body.removeEventListener("touchmove", preventScroll);
-      document.documentElement.removeEventListener("wheel", preventScroll);
-      document.documentElement.removeEventListener("touchmove", preventScroll);
-    };
-  }, [isVisible]);
+  // Note: Removed scroll prevention to allow content scrolling within the card
 
   // Don't return null immediately - let the animation complete
   if (!isVisible && !isExiting) return null;

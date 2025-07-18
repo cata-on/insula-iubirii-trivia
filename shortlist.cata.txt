@@ -2,6 +2,13 @@ This is where I, the author write and the AI will never make changes.
 AI can read from this when it needs to remind me about what's next on our shortlist.
 ========================================================================
 
-- swipe threshold display indicator
-- add analytics tracking
 
+bugs:
+- modal card person description is still not scrollable. 
+    when it needs to overflow, the text is just clipped.
+
+next:
+- add analytics tracking
+- add auth with popular social media accounts
+- voting functionality only for auth users
+- limit voting for some time maybe?
