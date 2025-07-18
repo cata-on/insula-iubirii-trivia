@@ -1,5 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
 
 export const metadata: Metadata = {
   title: "Insula Iubirii 2025 - Participanți și Informații",
@@ -8,7 +14,6 @@ export const metadata: Metadata = {
   keywords:
     "insula iubirii 2025, participanți, ispite feminine, ispite masculine, cupluri, reality show, antena 1",
   authors: [{ name: "Insula Iubirii Fan Site" }],
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
   robots: "index, follow",
   openGraph: {
     title: "Insula Iubirii 2025 - Participanți și Informații",

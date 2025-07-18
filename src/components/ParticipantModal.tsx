@@ -61,18 +61,47 @@ export default function ParticipantModal() {
             style={{
               width: "100%",
               height: "250px",
-              background: "linear-gradient(45deg, #667eea, #764ba2)",
               borderRadius: "12px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              color: "white",
-              fontSize: "4rem",
-              fontWeight: "300",
               marginBottom: "24px",
+              position: "relative",
+              overflow: "hidden",
             }}
           >
-            {participant.name.charAt(0).toUpperCase()}
+            {participant.picture ? (
+              <img
+                src={participant.picture}
+                alt={`${participant.name}`}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                }}
+                onError={(e) => {
+                  // Fallback to placeholder if image fails to load
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = "none";
+                  const sibling = target.nextElementSibling as HTMLElement;
+                  if (sibling) {
+                    sibling.style.display = "flex";
+                  }
+                }}
+              />
+            ) : null}
+            <div
+              style={{
+                width: "100%",
+                height: "100%",
+                background: "linear-gradient(45deg, #667eea, #764ba2)",
+                display: participant.picture ? "none" : "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "white",
+                fontSize: "4rem",
+                fontWeight: "300",
+              }}
+            >
+              {participant.name.charAt(0).toUpperCase()}
+            </div>
           </div>
 
           <h2

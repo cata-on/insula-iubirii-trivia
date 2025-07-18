@@ -9,6 +9,7 @@ export interface Participant {
   occupation: string;
   role: "ispita_feminina" | "ispit_masculin" | "cuplu";
   picture: string;
+  partner?: string; // Optional field for couples to reference their partner's ID
 }
 
 export type ParticipantCategory =

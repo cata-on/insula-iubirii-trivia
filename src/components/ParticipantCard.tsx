@@ -57,8 +57,23 @@ export default function ParticipantCard({ participant }: ParticipantCardProps) {
       }}
     >
       <div className="card-image">
-        {/* Placeholder for now - will be replaced with actual images */}
-        <div className="card-image-placeholder">
+        {participant.picture ? (
+          <img
+            src={participant.picture}
+            alt={`${participant.name}`}
+            onError={(e) => {
+              // Fallback to placeholder if image fails to load
+              const target = e.target as HTMLImageElement;
+              target.style.display = "none";
+              target.nextElementSibling?.classList.remove("hidden");
+            }}
+          />
+        ) : null}
+        <div
+          className={`card-image-placeholder ${
+            participant.picture ? "hidden" : ""
+          }`}
+        >
           {participant.name.charAt(0).toUpperCase()}
         </div>
       </div>
