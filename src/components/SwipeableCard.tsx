@@ -46,14 +46,32 @@ export default function SwipeableCard({
 
   // Prevent body scroll when card is visible
   useEffect(() => {
+    const preventScroll = (e: Event) => {
+      e.preventDefault();
+    };
+
     if (isVisible) {
-      document.body.classList.add("modal-open");
-    } else {
-      document.body.classList.remove("modal-open");
+      // Prevent scroll on body and html
+      document.body.addEventListener("wheel", preventScroll, {
+        passive: false,
+      });
+      document.body.addEventListener("touchmove", preventScroll, {
+        passive: false,
+      });
+      document.documentElement.addEventListener("wheel", preventScroll, {
+        passive: false,
+      });
+      document.documentElement.addEventListener("touchmove", preventScroll, {
+        passive: false,
+      });
     }
 
     return () => {
-      document.body.classList.remove("modal-open");
+      // Remove event listeners
+      document.body.removeEventListener("wheel", preventScroll);
+      document.body.removeEventListener("touchmove", preventScroll);
+      document.documentElement.removeEventListener("wheel", preventScroll);
+      document.documentElement.removeEventListener("touchmove", preventScroll);
     };
   }, [isVisible]);
 

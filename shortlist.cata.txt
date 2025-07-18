@@ -1,0 +1,6 @@
+This is where I, the author write and the AI will never make changes.
+AI can read from this when it needs to remind me about what's next on our shortlist.
+========================================================================
+
+- swipe threshold display indicator
+

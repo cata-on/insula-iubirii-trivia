@@ -31,12 +31,6 @@ export default function ParticipantCard({ participant }: ParticipantCardProps) {
     return null;
   };
 
-  // Truncate bio for compact display
-  const truncateBio = (bio: string, maxLength: number = 80) => {
-    if (bio.length <= maxLength) return bio;
-    return bio.substring(0, maxLength) + "...";
-  };
-
   return (
     <div
       className="card"
@@ -84,8 +78,6 @@ export default function ParticipantCard({ participant }: ParticipantCardProps) {
         {formatLocation() && (
           <p className="card-location">{formatLocation()}</p>
         )}
-
-        <p className="card-bio">{truncateBio(participant.bio)}</p>
       </div>
     </div>
   );

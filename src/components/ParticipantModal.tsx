@@ -16,12 +16,38 @@ export default function ParticipantModal() {
 
     if (participant) {
       document.addEventListener("keydown", handleEscape);
-      document.body.classList.add("modal-open");
+
+      // Prevent scroll
+      const preventScroll = (e: Event) => {
+        e.preventDefault();
+      };
+
+      document.body.addEventListener("wheel", preventScroll, {
+        passive: false,
+      });
+      document.body.addEventListener("touchmove", preventScroll, {
+        passive: false,
+      });
+      document.documentElement.addEventListener("wheel", preventScroll, {
+        passive: false,
+      });
+      document.documentElement.addEventListener("touchmove", preventScroll, {
+        passive: false,
+      });
     }
 
     return () => {
       document.removeEventListener("keydown", handleEscape);
-      document.body.classList.remove("modal-open");
+
+      // Remove scroll prevention
+      const preventScroll = (e: Event) => {
+        e.preventDefault();
+      };
+
+      document.body.removeEventListener("wheel", preventScroll);
+      document.body.removeEventListener("touchmove", preventScroll);
+      document.documentElement.removeEventListener("wheel", preventScroll);
+      document.documentElement.removeEventListener("touchmove", preventScroll);
     };
   }, [participant, clearSelection]);
 
