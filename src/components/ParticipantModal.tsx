@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import { Participant } from "@/types/participant";
 import { useAppContext } from "@/context/AppContext";
 
 export default function ParticipantModal() {
@@ -17,12 +16,12 @@ export default function ParticipantModal() {
 
     if (participant) {
       document.addEventListener("keydown", handleEscape);
-      document.body.style.overflow = "hidden";
+      document.body.classList.add("modal-open");
     }
 
     return () => {
       document.removeEventListener("keydown", handleEscape);
-      document.body.style.overflow = "unset";
+      document.body.classList.remove("modal-open");
     };
   }, [participant, clearSelection]);
 
@@ -56,26 +55,12 @@ export default function ParticipantModal() {
           ×
         </button>
 
-        <div style={{ padding: "24px" }}>
-          <div
-            style={{
-              width: "100%",
-              height: "250px",
-              borderRadius: "12px",
-              marginBottom: "24px",
-              position: "relative",
-              overflow: "hidden",
-            }}
-          >
+        <div className="modal-body">
+          <div className="modal-image">
             {participant.picture ? (
               <img
                 src={participant.picture}
                 alt={`${participant.name}`}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                }}
                 onError={(e) => {
                   // Fallback to placeholder if image fails to load
                   const target = e.target as HTMLImageElement;
@@ -87,158 +72,46 @@ export default function ParticipantModal() {
                 }}
               />
             ) : null}
-            <div
-              style={{
-                width: "100%",
-                height: "100%",
-                background: "linear-gradient(45deg, #667eea, #764ba2)",
-                display: participant.picture ? "none" : "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "white",
-                fontSize: "4rem",
-                fontWeight: "300",
-              }}
-            >
+            <div className="modal-image-placeholder">
               {participant.name.charAt(0).toUpperCase()}
             </div>
           </div>
 
-          <h2
-            style={{
-              fontSize: "1.75rem",
-              fontWeight: "700",
-              color: "#2d3748",
-              marginBottom: "8px",
-            }}
-          >
-            {participant.name}
-          </h2>
+          <h2 className="modal-title">{participant.name}</h2>
 
-          {formatAge() && (
-            <p
-              style={{
-                fontSize: "1rem",
-                color: "#718096",
-                marginBottom: "12px",
-              }}
-            >
-              {formatAge()}
-            </p>
-          )}
+          {formatAge() && <p className="modal-age">{formatAge()}</p>}
 
           {formatLocation() && (
-            <p
-              style={{
-                fontSize: "1rem",
-                color: "#718096",
-                marginBottom: "16px",
-              }}
-            >
-              {formatLocation()}
-            </p>
+            <p className="modal-location">{formatLocation()}</p>
           )}
 
-          <div
-            style={{
-              fontSize: "0.875rem",
-              fontWeight: "600",
-              color: "#667eea",
-              textTransform: "uppercase",
-              letterSpacing: "0.5px",
-              marginBottom: "16px",
-            }}
-          >
-            {participant.occupation}
-          </div>
+          <div className="modal-occupation">{participant.occupation}</div>
 
-          <p
-            style={{
-              fontSize: "1rem",
-              color: "#4a5568",
-              lineHeight: "1.6",
-              marginBottom: "24px",
-            }}
-          >
-            {participant.bio}
-          </p>
+          <p className="modal-bio">{participant.bio}</p>
 
-          <div
-            style={{
-              borderTop: "1px solid #e2e8f0",
-              paddingTop: "20px",
-            }}
-          >
+          <div className="modal-details">
             {participant.birthplace && participant.currentLocation && (
-              <div style={{ marginBottom: "16px" }}>
-                <div
-                  style={{
-                    fontSize: "0.75rem",
-                    fontWeight: "600",
-                    color: "#718096",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.5px",
-                    marginBottom: "4px",
-                  }}
-                >
-                  Locul de naștere
-                </div>
-                <div
-                  style={{
-                    fontSize: "1rem",
-                    color: "#2d3748",
-                  }}
-                >
+              <div className="modal-detail-item">
+                <div className="modal-detail-label">Locul de naștere</div>
+                <div className="modal-detail-value">
                   {participant.birthplace}
                 </div>
               </div>
             )}
 
             {participant.currentLocation && participant.birthplace && (
-              <div style={{ marginBottom: "16px" }}>
-                <div
-                  style={{
-                    fontSize: "0.75rem",
-                    fontWeight: "600",
-                    color: "#718096",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.5px",
-                    marginBottom: "4px",
-                  }}
-                >
-                  Locația actuală
-                </div>
-                <div
-                  style={{
-                    fontSize: "1rem",
-                    color: "#2d3748",
-                  }}
-                >
+              <div className="modal-detail-item">
+                <div className="modal-detail-label">Locația actuală</div>
+                <div className="modal-detail-value">
                   {participant.currentLocation}
                 </div>
               </div>
             )}
 
             {participant.otherLocations.length > 0 && (
-              <div style={{ marginBottom: "16px" }}>
-                <div
-                  style={{
-                    fontSize: "0.75rem",
-                    fontWeight: "600",
-                    color: "#718096",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.5px",
-                    marginBottom: "4px",
-                  }}
-                >
-                  Alte locații
-                </div>
-                <div
-                  style={{
-                    fontSize: "1rem",
-                    color: "#2d3748",
-                  }}
-                >
+              <div className="modal-detail-item">
+                <div className="modal-detail-label">Alte locații</div>
+                <div className="modal-detail-value">
                   {participant.otherLocations.join(", ")}
                 </div>
               </div>

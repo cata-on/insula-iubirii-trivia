@@ -6,6 +6,7 @@ import {
   ParticipantCategory,
   Participant,
 } from "@/types/participant";
+import { getParticipantsByCategory } from "@/utils/dataLoader";
 
 // Action types for state management
 type AppAction =
@@ -13,8 +14,8 @@ type AppAction =
   | { type: "SELECT_PARTICIPANT"; payload: Participant | null }
   | { type: "CLEAR_SELECTION" };
 
-// Initial state
-const initialState: AppState = {
+// Default initial state
+const defaultInitialState: AppState = {
   currentCategory: "ispite_feminine",
   selectedParticipant: null,
 };
@@ -51,12 +52,40 @@ interface AppContextType {
   clearSelection: () => void;
 }
 
+// Provider props interface
+interface AppProviderProps {
+  children: ReactNode;
+  initialCategory?: ParticipantCategory;
+  initialParticipantId?: string;
+}
+
 // Create context
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 // Provider component
-export function AppProvider({ children }: { children: ReactNode }) {
-  const [state, dispatch] = useReducer(appReducer, initialState);
+export function AppProvider({
+  children,
+  initialCategory,
+  initialParticipantId,
+}: AppProviderProps) {
+  // Create initial state based on props
+  const getInitialState = (): AppState => {
+    if (!initialCategory) {
+      return defaultInitialState;
+    }
+
+    const participants = getParticipantsByCategory(initialCategory);
+    const participant = initialParticipantId
+      ? participants.find((p) => p.id === initialParticipantId) || null
+      : null;
+
+    return {
+      currentCategory: initialCategory,
+      selectedParticipant: participant,
+    };
+  };
+
+  const [state, dispatch] = useReducer(appReducer, getInitialState());
 
   const setCategory = (category: ParticipantCategory) => {
     dispatch({ type: "SET_CATEGORY", payload: category });
